@@ -1,0 +1,73 @@
+<section class="table-card">
+
+    <div class="table-toolbar">
+        <div>
+            <h2 class="table-title">Products</h2>
+            <p class="table-subtitle">
+                Showing {{ startItem }} – {{ endItem }} of {{ sortedRows.length }}
+            </p>
+        </div>
+
+        <label class="search-field">
+            <span>Search</span>
+            <input type="text" [(ngModel)]="searchInput" (ngModelChange)="onInputChange()" placeholder="Search..." />
+        </label>
+    </div>
+
+    <!-- show this while data is loading -->
+    <div *ngIf="loading" class="state-box">Loading...</div>
+
+    <!-- show this if search returned nothing -->
+    <div *ngIf="!loading && sortedRows.length === 0" class="state-box">
+        No results found.
+    </div>
+
+    <!-- the table -->
+    <div *ngIf="!loading && sortedRows.length > 0" class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <!-- one header cell per column -->
+                    <th *ngFor="let col of columns" [class.sortable]="col.sortable !== false"
+                        (click)="onSortClick(col)">
+                        {{ col.label }}
+                        <!-- arrow showing sort direction -->
+                        <span class="sort-icon">{{ getSortIcon(col) }}</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- one row per item in current page -->
+                <tr *ngFor="let row of paginatedRows">
+                    <!-- one cell per column -->
+                    <td *ngFor="let col of columns">
+                        <span [class]="getCell(row, col).cssClass">
+                            {{ getCell(row, col).text }}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- pagination controls -->
+    <footer *ngIf="!loading && sortedRows.length > 0" class="pagination">
+
+        <label>
+            Rows per page
+            <select [ngModel]="pageSize" (ngModelChange)="onPageSizeChange($event)">
+                <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
+            </select>
+        </label>
+
+        <div class="page-controls">
+            <button (click)="goToPage(1)" [disabled]="currentPage === 1">First</button>
+            <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Prev</button>
+            <span>Page {{ currentPage }} of {{ totalPages }}</span>
+            <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+            <button (click)="goToPage(totalPages)" [disabled]="currentPage === totalPages">Last</button>
+        </div>
+
+    </footer>
+
+</section>
