@@ -1,70 +1,59 @@
-# Data Table Candidate Assessment
+# DataTableCandidateAssessment
 
-This project is a small Angular application built for the frontend assessment.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
 
-It contains a reusable data table component built from scratch with:
+## Development server
 
-- Angular
-- TypeScript
-- plain HTML
-- hand-written SCSS
-- no UI libraries
-
-The table supports:
-
-- search across visible columns
-- column sorting
-- pagination
-- configurable rows per page
-- loading state
-- empty state
-- custom cell rendering, used for the status badge
-
-## Install
+To start a local development server, run:
 
 ```bash
-npm install
+ng serve
 ```
 
-## Run the Angular app
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Code scaffolding
+
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
 ```bash
-npm start
+ng generate component component-name
 ```
 
-Then open:
-
-```txt
-http://localhost:4200
-```
-
-## Run Storybook
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
 ```bash
-npm run storybook
+ng generate --help
 ```
 
-Then open:
+## Building
 
-```txt
-http://localhost:6006
-```
-
-## Build the project
+To build the project run:
 
 ```bash
-npm run build
+ng build
 ```
 
-## Build Storybook
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
 ```bash
-npm run build-storybook
+ng test
 ```
 
-## Assessment files
+## Running end-to-end tests
 
-The repository also includes:
+For end-to-end (e2e) testing, run:
 
-- `DECISIONS.md` — architecture decision log
-- `REVIEW.md` — code review exercise
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
